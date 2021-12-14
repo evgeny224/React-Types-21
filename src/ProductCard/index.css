@@ -1,0 +1,12 @@
+
+.product__card-image img {
+    width: 423px;
+    height: 600px;
+}
+
+
+.product__card__component-navbar a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
