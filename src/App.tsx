@@ -1,8 +1,7 @@
 import React from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import ProductCardList from "./ProductCardList";
-import * as productData from "./Data/clockData";
+import Content from "./Content";
 import "./App.css";
 
 const App = () => {
@@ -10,7 +9,7 @@ const App = () => {
     <div className="product__card">
       <Header />
       <div>
-        <ProductCardList product={productData} />
+        <Content />
       </div>
       <Footer />
     </div>
