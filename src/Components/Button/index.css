@@ -1,10 +1,13 @@
-.product__card__component-btn button {
-    width: 423px;
-    height: 60px;
+
+.component__btn button {
+    padding: 1rem 9rem;
+    color: #fff;
+    background: #FF4820;
+    font-weight: 500;
+    font-size: 22px;
     line-height: 25px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    text-transform: uppercase;
+    border-radius: 5px;
     border: 0;
+    outline: none;
+    cursor: pointer;
 }

@@ -1,0 +1,38 @@
+.content{
+    background-color: #ffecb3;
+    height: 800px;
+}
+
+.content__form{
+    position: relative;
+    top: 120px;
+}
+
+
+.content__form__list{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #0F4279;
+    width: 400px;
+    border-radius: 5px;
+}
+
+.content__form__input{
+    padding-bottom: 20px;
+}
+.content__form__input p{
+    color: white;
+    margin: 0;
+    font-size: 20px;
+}
+
+.name{
+   padding-top: 20px;
+}
+
+.notsamepass{
+    font-size: 22px;
+    color: red;
+    padding: 20px;
+}

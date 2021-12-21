@@ -27,17 +27,34 @@ const Content: React.FC = () => {
   };
 
   return (
-    <div>
-      <div>
-        <Input setData={setName} />
-        <Input setData={setSurname} />
-        <Input setData={setLogin} />
-        <Input setData={setPassword} />
-        {flag ? <div>Пароли не совпадают</div> : null}
-        <Input setData={setRepeatPassword} />
-      </div>
-      <div>
-        <Button submitData={submitForm} />
+    <div className="content">
+      <div className="content__form">
+        <div className="content__form__list">
+          <div className="content__form__input name">
+            <p>Имя</p>
+            <Input setData={setName} />
+          </div>
+          <div className="content__form__input surname">
+            <p>Фамилия</p>
+            <Input setData={setSurname} />
+          </div>
+          <div className="content__form__input login">
+            <p>Логин</p>
+            <Input setData={setLogin} />
+          </div>
+          <div className="content__form__input password">
+            <p>Введите пароль</p>
+            <Input setData={setPassword} type="password" />
+          </div>
+          <div className="content__form__input repeatpassword">
+            <p>Повторите пароль</p>
+            <Input setData={setRepeatPassword} type="password" />
+          </div>
+          {flag ? <div className="notsamepass">Пароли не совпадают</div> : null}
+        </div>
+        <div>
+          <Button submitData={submitForm} />
+        </div>
       </div>
     </div>
   );

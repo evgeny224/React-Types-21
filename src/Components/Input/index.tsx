@@ -3,16 +3,17 @@ import "./index.css";
 
 type InputPropsType = {
   setData: React.Dispatch<React.SetStateAction<string>>;
+  type?: string;
 };
 
 const Input: React.FC<InputPropsType> = (props) => {
-  const { setData } = props;
+  const { setData, type } = props;
   const changeData = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData(e.target.value);
   };
   return (
-    <div>
-      <input onChange={changeData} />
+    <div className="form__input">
+      <input onChange={changeData} type={type} />
     </div>
   );
 };

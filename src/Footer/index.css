@@ -1,0 +1,26 @@
+.footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #002853;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    align-items: flex-start;
+}
+
+.footer h4 {
+    text-transform: uppercase;
+}
+
+.footer a{
+    text-decoration: none;
+    color: white;
+    vertical-align: center;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.footer p {
+    font-size: 12px;
+}
+

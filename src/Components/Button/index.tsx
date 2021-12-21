@@ -12,7 +12,7 @@ const Button: React.FC<ButtonPropsType> = (props) => {
     submitData();
   };
   return (
-    <div className="product__card__component-btn">
+    <div className="component__btn">
       <button type="button" onClick={addData}>
         Отправить
       </button>
