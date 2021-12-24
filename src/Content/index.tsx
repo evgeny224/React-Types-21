@@ -10,12 +10,21 @@ const Content: React.FC = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const [flag, setFlag] = useState(false);
-  const [error, setError] = useState(false);
+  const [validation, setValidation] = useState({
+    notEqualPasswords: false,
+    emptyString: false,
+  });
+
+  const userData = {
+    Имя: name,
+    Фамилия: surname,
+    Логин: login,
+    Пароль: password,
+  };
 
   const submitForm = () => {
     if (password !== repeatPassword) {
-      setFlag(true);
+      setValidation({ ...validation, notEqualPasswords: true });
     } else if (
       name === "" ||
       surname === "" ||
@@ -23,16 +32,17 @@ const Content: React.FC = () => {
       password === "" ||
       repeatPassword === ""
     ) {
-      setError(true);
-    } else {
-      setFlag(false);
-      setError(false);
-      console.log({
-        Имя: name,
-        Фамилия: surname,
-        Логин: login,
-        Пароль: password,
+      setValidation({
+        ...validation,
+        emptyString: true,
+        notEqualPasswords: false,
       });
+    } else {
+      setValidation({
+        ...validation,
+        emptyString: false,
+      });
+      console.log(userData);
     }
   };
 
@@ -60,8 +70,12 @@ const Content: React.FC = () => {
             <p>Повторите пароль</p>
             <Input setData={setRepeatPassword} type="password" />
           </div>
-          {flag ? <div className="notsamepass">Пароли не совпадают</div> : null}
-          {error ? <div className="notsamepass">Заполните все поля</div> : null}
+          {validation.notEqualPasswords ? (
+            <div className="notsamepass">Пароли не совпадают</div>
+          ) : null}
+          {validation.emptyString ? (
+            <div className="notsamepass">Заполните все поля</div>
+          ) : null}
         </div>
         <div>
           <Button submitData={submitForm} />

@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 
 type InputPropsType = {
-  setData: React.Dispatch<React.SetStateAction<string>>;
+  setData: any;
   type?: string;
 };
 
