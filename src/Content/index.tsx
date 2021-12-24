@@ -11,12 +11,22 @@ const Content: React.FC = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const [flag, setFlag] = useState(false);
+  const [error, setError] = useState(false);
 
   const submitForm = () => {
     if (password !== repeatPassword) {
       setFlag(true);
+    } else if (
+      name === "" ||
+      surname === "" ||
+      login === "" ||
+      password === "" ||
+      repeatPassword === ""
+    ) {
+      setError(true);
     } else {
       setFlag(false);
+      setError(false);
       console.log({
         Имя: name,
         Фамилия: surname,
@@ -51,6 +61,7 @@ const Content: React.FC = () => {
             <Input setData={setRepeatPassword} type="password" />
           </div>
           {flag ? <div className="notsamepass">Пароли не совпадают</div> : null}
+          {error ? <div className="notsamepass">Заполните все поля</div> : null}
         </div>
         <div>
           <Button submitData={submitForm} />
