@@ -2,14 +2,14 @@ import React from "react";
 import "./index.css";
 
 type ButtonPropsType = {
-  submitData: any;
+  submitForm: any;
 };
 
 const Button: React.FC<ButtonPropsType> = (props) => {
-  const { submitData } = props;
+  const { submitForm } = props;
 
   const addData = () => {
-    submitData();
+    submitForm();
   };
   return (
     <div className="component__btn">

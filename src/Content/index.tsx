@@ -78,7 +78,7 @@ const Content: React.FC = () => {
           ) : null}
         </div>
         <div>
-          <Button submitData={submitForm} />
+          <Button submitForm={submitForm} />
         </div>
       </div>
     </div>
