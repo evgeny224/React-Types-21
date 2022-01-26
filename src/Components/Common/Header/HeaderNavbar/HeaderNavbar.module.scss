@@ -1,0 +1,35 @@
+.header__nav{
+    height: 32px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    background-color: #F8F8F7;
+}
+
+.header__nav__list{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 0;
+    align-items: center;
+}
+.header__nav__list a {
+    color: #ADADAB;
+    text-decoration: none;
+    padding: 1rem;
+    list-style-type: none;
+}
+.header__nav__social a{
+    color: #ADADAB;
+}
+.header__nav__social{
+    display: flex;
+    justify-content:space-between;
+}
+li {
+    list-style-type: none;
+}
+.lastitem{
+    padding-right: 15px;
+}
