@@ -2,8 +2,8 @@ import React from "react";
 import style from "./Input.module.scss";
 
 type InputPropsType = {
-  setData: any;
-  placeholder: string;
+  setData: React.Dispatch<React.SetStateAction<string>>;
+  placeholder?: string;
   type?: string;
 };
 

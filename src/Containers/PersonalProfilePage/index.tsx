@@ -1,8 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import style from "./PersonalAreaPage.module.scss";
 import arrow from "../../Assets/GroupArrow 3117656.png";
 import mask from "../../Assets/Mask Group.png";
+import SaveButton from "../../Components/Buttons/SaveButton";
 
 type PersonalProfilePagePropsTypes = {
   userData: {
@@ -18,6 +19,10 @@ type PersonalProfilePagePropsTypes = {
 const PersonalProfilePage: React.FC<PersonalProfilePagePropsTypes> = (
   props
 ) => {
+  const history = useNavigate();
+  const outProfile = () => {
+    history("/");
+  };
   const {
     userData: { callSign, email, name, birthDate, family, city },
   } = props;
@@ -25,7 +30,7 @@ const PersonalProfilePage: React.FC<PersonalProfilePagePropsTypes> = (
     <div className={style.content}>
       <div className={style.content__profile}>
         <div className={style.content__profile__input}>
-          <NavLink to="/" className={style.content__title}>
+          <NavLink to="/editprofile" className={style.content__title}>
             <div>
               <img src={arrow} alt="arrow" />
             </div>
@@ -75,6 +80,9 @@ const PersonalProfilePage: React.FC<PersonalProfilePagePropsTypes> = (
           </div>
           <div>
             <p>Фото</p>
+          </div>
+          <div className={style.content__profile__btn}>
+            <SaveButton submitForm={outProfile} title="Выйти" />
           </div>
         </div>
       </div>

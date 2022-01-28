@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import PageWrapper from "../../Components/Common/PageWrapper";
+import AuthPage from "../AuthPage";
 import NotFoundPage from "../NotFoundPage";
 import PersonalProfilePage from "../PersonalProfilePage";
 import ProfileEditingPage from "../ProfileEditingPage";
@@ -12,6 +13,8 @@ const App = () => {
   const [birthDate, setBirthDate] = useState("Дата рождения");
   const [family, setFamily] = useState("Фамилия");
   const [city, setCity] = useState("Город");
+  const [userLogin] = useState("abc");
+  const [userPassword] = useState("123");
 
   const userData = {
     callSign,
@@ -20,6 +23,8 @@ const App = () => {
     birthDate,
     family,
     city,
+    userLogin,
+    userPassword,
     setcallSign,
     setEmail,
     setName,
@@ -31,7 +36,11 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<PageWrapper />}>
-        <Route index element={<ProfileEditingPage userData={userData} />} />
+        <Route index element={<AuthPage userData={userData} />} />
+        <Route
+          path="editprofile"
+          element={<ProfileEditingPage userData={userData} />}
+        />
         <Route
           path="profile"
           element={<PersonalProfilePage userData={userData} />}

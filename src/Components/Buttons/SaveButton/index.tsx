@@ -3,10 +3,11 @@ import style from "./Button.module.scss";
 
 type ButtonPropsType = {
   submitForm: () => void;
+  title: string;
 };
 
 const SaveButton: React.FC<ButtonPropsType> = (props) => {
-  const { submitForm } = props;
+  const { submitForm, title } = props;
 
   const addData = () => {
     submitForm();
@@ -14,7 +15,7 @@ const SaveButton: React.FC<ButtonPropsType> = (props) => {
   return (
     <div className={style.component__btn}>
       <button type="button" onClick={addData}>
-        Сохранить
+        {title}
       </button>
     </div>
   );

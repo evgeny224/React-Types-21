@@ -84,7 +84,7 @@ const ProfileEditingPage: React.FC<ProfileEditingPagePropsTypes> = (props) => {
           </div>
         </div>
         <div>
-          <SaveButton submitForm={submitForm} />
+          <SaveButton submitForm={submitForm} title="Сохранить" />
         </div>
       </div>
       <div className={style.profile__load__photo}>

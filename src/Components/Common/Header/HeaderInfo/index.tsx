@@ -9,7 +9,7 @@ const HeaderInfo: React.FC = () => {
     <nav className={style.header__info}>
       <ul className={style.header__info__list}>
         <li className={style.header__info__list__logo}>
-          <NavLink to="/">
+          <NavLink to="profile">
             <img src={logo} alt="logo" />
           </NavLink>
         </li>
