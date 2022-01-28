@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Button.module.scss";
 
 type ButtonPropsType = {
-  submitForm: any;
+  submitForm: () => void;
 };
 
 const SaveButton: React.FC<ButtonPropsType> = (props) => {

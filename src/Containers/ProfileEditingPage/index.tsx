@@ -1,20 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import SaveButton from "../../Components/Buttons/SaveButton";
 import Input from "../../Components/Input";
 import mask from "../../Assets/Mask Group.png";
 import style from "./ProfileEditingPage.module.scss";
 import LoadButton from "../../Components/Buttons/LoadButton";
 
-const ProfileEditingPage: React.FC = () => {
-  const [callSign, setcallSign] = useState("Позывной");
-  const [email, setEmail] = useState("privatka@club.ru");
-  const [name, setName] = useState("Имя");
-  const [birthDate, setBirthDate] = useState("Дата рождения");
-  const [family, setFamily] = useState("Фамилия");
-  const [city, setCity] = useState("Город");
+type ProfileEditingPagePropsTypes = {
+  userData: {
+    callSign: string;
+    email: string;
+    name: string;
+    birthDate: string;
+    family: string;
+    city: string;
+    setcallSign: React.Dispatch<React.SetStateAction<string>>;
+    setEmail: React.Dispatch<React.SetStateAction<string>>;
+    setName: React.Dispatch<React.SetStateAction<string>>;
+    setBirthDate: React.Dispatch<React.SetStateAction<string>>;
+    setFamily: React.Dispatch<React.SetStateAction<string>>;
+    setCity: React.Dispatch<React.SetStateAction<string>>;
+  };
+};
+
+const ProfileEditingPage: React.FC<ProfileEditingPagePropsTypes> = (props) => {
+  const {
+    userData: {
+      callSign,
+      email,
+      name,
+      birthDate,
+      family,
+      city,
+      setcallSign,
+      setEmail,
+      setName,
+      setBirthDate,
+      setFamily,
+      setCity,
+    },
+  } = props;
+
+  const history = useNavigate();
 
   const submitForm = () => {
-    return null;
+    history("/profile");
   };
 
   return (

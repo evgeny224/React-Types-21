@@ -4,7 +4,7 @@ import style from "./LoadButton.module.scss";
 const LoadButton: React.FC = () => {
   return (
     <div className={style.component__btn}>
-      <button type="button">Загрузить</button>
+      <button type="submit">Загрузить</button>
     </div>
   );
 };

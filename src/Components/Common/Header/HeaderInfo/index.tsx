@@ -9,7 +9,9 @@ const HeaderInfo: React.FC = () => {
     <nav className={style.header__info}>
       <ul className={style.header__info__list}>
         <li className={style.header__info__list__logo}>
-          <img src={logo} alt="logo" />
+          <NavLink to="/">
+            <img src={logo} alt="logo" />
+          </NavLink>
         </li>
         <li>
           <NavLink to="/events">МЕРОПРИЯТИЯ</NavLink>
