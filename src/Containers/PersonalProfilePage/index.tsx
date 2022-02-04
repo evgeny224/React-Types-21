@@ -1,31 +1,21 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import style from "./PersonalAreaPage.module.scss";
 import arrow from "../../Assets/GroupArrow 3117656.png";
 import mask from "../../Assets/Mask Group.png";
 import SaveButton from "../../Components/Buttons/SaveButton";
+import { getUserData } from "../../Store/ProfileEditingPage/selectors";
 
-type PersonalProfilePagePropsTypes = {
-  userData: {
-    callSign: string;
-    email: string;
-    name: string;
-    birthDate: string;
-    family: string;
-    city: string;
-  };
-};
-
-const PersonalProfilePage: React.FC<PersonalProfilePagePropsTypes> = (
-  props
-) => {
+const PersonalProfilePage: React.FC = () => {
   const history = useNavigate();
   const outProfile = () => {
     history("/");
   };
-  const {
-    userData: { callSign, email, name, birthDate, family, city },
-  } = props;
+  const userData = useSelector(getUserData);
+  console.log(userData);
+  const { name, callSign, email, birthDate, family, city } = userData;
+
   return (
     <div className={style.content}>
       <div className={style.content__profile}>

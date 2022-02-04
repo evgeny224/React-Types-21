@@ -34,7 +34,11 @@
         { "namedComponents": "arrow-function" }
       ],
       "react/prop-types": "off",
-      "react/require-default-props":"off"  
+      "react/require-default-props":"off",
+      "no-unused-vars": "warn",
+      "no-console": "off",
+      "no-shadow":"off",
+      "default-param-last": "off"  
     }
   }
   

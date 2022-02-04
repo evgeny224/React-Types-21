@@ -1,26 +1,19 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import SaveButton from "../../Components/Buttons/SaveButton";
 import Input from "../../Components/Input";
+import { getAuthUserData } from "../../Store/AuthPage/selectors";
 import style from "./AuthPage.module.scss";
 
-type AuthPagePropsType = {
-  userData: {
-    userLogin: string;
-    userPassword: string;
-  };
-};
-
-const AuthPage: React.FC<AuthPagePropsType> = (props) => {
+const AuthPage: React.FC = () => {
   const [login, setLogin] = useState("Логин");
   const [password, setPassword] = useState("Пароль");
   const [validator, setValidator] = useState(false);
   const history = useNavigate();
-  const {
-    userData: { userLogin, userPassword },
-  } = props;
+  const AuthUserData = useSelector(getAuthUserData);
   const checkData = () => {
-    if (login === userLogin && password === userPassword) {
+    if (login === AuthUserData.login && password === AuthUserData.password) {
       history("/profile");
     }
     setValidator(true);
