@@ -34,7 +34,6 @@ const ProfileEditingPage: React.FC = () => {
     );
   };
   const userData = useSelector(getUserData);
-  console.log(userData);
 
   return (
     <div className={style.profile}>

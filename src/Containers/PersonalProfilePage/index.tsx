@@ -13,7 +13,7 @@ const PersonalProfilePage: React.FC = () => {
     history("/");
   };
   const userData = useSelector(getUserData);
-  console.log(userData);
+
   const { name, callSign, email, birthDate, family, city } = userData;
 
   return (
