@@ -1,5 +1,5 @@
 import { UserEditingActionType } from "./actions";
-import { userEditingActionType, UserType } from "./types";
+import { userEditingAction, UserType } from "./types";
 
 const initialState: UserType = {
   name: "Имя",
@@ -11,7 +11,7 @@ const initialState: UserType = {
 };
 const profileReducer = (
   state = initialState,
-  action: userEditingActionType
+  action: userEditingAction
 ): UserType => {
   switch (action.type) {
     case UserEditingActionType.userEditing:

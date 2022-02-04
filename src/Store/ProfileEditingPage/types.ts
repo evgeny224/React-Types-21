@@ -11,7 +11,7 @@ export type UserType = {
   family: string;
   city: string;
 };
-export type userEditingActionType = {
+export type userEditingAction = {
   type: UserEditingActionType.userEditing;
   payload: UserType;
 };
