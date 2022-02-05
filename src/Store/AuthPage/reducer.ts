@@ -1,12 +1,14 @@
 import { UserAuthActionType } from "./actions";
-import { AuthType, authUserAction } from "./types";
+import { authUserAction, ReducerType } from "./types";
 
-const intialState: AuthType = {
-  login: "abc",
-  password: "123",
+const intialState: ReducerType = {
+  auth: { login: "abc", password: "123" },
 };
 
-const authReducer = (state = intialState, action: authUserAction): AuthType => {
+const authReducer = (
+  state = intialState,
+  action: authUserAction
+): ReducerType => {
   switch (action.type) {
     case UserAuthActionType.userAuth: {
       return state;

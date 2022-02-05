@@ -12,12 +12,8 @@ const AuthPage: React.FC = () => {
   const [validator, setValidator] = useState(false);
   const history = useNavigate();
   const AuthUserData = useSelector(getAuthUserData);
-  console.log(AuthUserData);
   const checkData = () => {
-    if (
-      login === AuthUserData.auth.login &&
-      password === AuthUserData.auth.password
-    ) {
+    if (login === AuthUserData.login && password === AuthUserData.password) {
       history("/profile");
     }
     setValidator(true);
