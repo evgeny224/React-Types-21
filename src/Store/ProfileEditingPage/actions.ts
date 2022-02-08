@@ -1,12 +1,32 @@
-import { UserType } from "./types";
+import { Dispatch } from "react";
+import { makeRequest } from "../../Network";
+import { OneUserType, userFetchEditingAction } from "./types";
 
 /* eslint-disable no-unused-vars */
-export enum UserEditingActionType {
-  userEditing = "USER_EDITING",
+export enum UserActionType {
+  fetchOneUserData = "FETCH_ONE_USER_DATA",
+  fetchUserData = "FETCH_USER_DATA",
 }
-export const userEditingActionCreator = (userEditing: UserType) => {
+
+// export const userEditingActionCreator = (action: OneUserType) => {
+//   return {
+
+//   }
+// }
+
+export const fetchOneUserActionCreator = (action: OneUserType) => {
   return {
-    type: UserEditingActionType.userEditing,
-    payload: userEditing,
+    type: UserActionType.fetchOneUserData,
+    payload: action,
+  };
+};
+
+export const fetchUserDataActionCreator = () => {
+  return async (dispatch: Dispatch<userFetchEditingAction>) => {
+    const data = await makeRequest({ url: "users" });
+    dispatch({
+      type: UserActionType.fetchUserData,
+      payload: data,
+    });
   };
 };

@@ -1,21 +1,34 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import SaveButton from "../../Components/Buttons/SaveButton";
 import Input from "../../Components/Input";
-import { getAuthUserData } from "../../Store/AuthPage/selectors";
+import {
+  fetchOneUserActionCreator,
+  fetchUserDataActionCreator,
+} from "../../Store/ProfileEditingPage/actions";
+import { getUserData } from "../../Store/ProfileEditingPage/selectors";
 import style from "./AuthPage.module.scss";
 
 const AuthPage: React.FC = () => {
-  const [login, setLogin] = useState("Логин");
-  const [password, setPassword] = useState("Пароль");
+  useEffect(() => {
+    dispatch(fetchUserDataActionCreator());
+  }, []);
+  const [name, setName] = useState("Имя");
+  const [email, setEmail] = useState("Электронная Почта");
   const [validator, setValidator] = useState(false);
-  const history = useNavigate();
-  const AuthUserData = useSelector(getAuthUserData);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userData = useSelector(getUserData);
+
+  console.log(userData);
   const checkData = () => {
-    if (login === AuthUserData.login && password === AuthUserData.password) {
-      history("/profile");
-    }
+    userData.forEach((element) => {
+      if (element.name === name && element.email === email) {
+        dispatch(fetchOneUserActionCreator(element));
+        navigate("/profile");
+      }
+    });
     setValidator(true);
   };
   return (
@@ -24,16 +37,14 @@ const AuthPage: React.FC = () => {
         <h1>Авторизация</h1>
       </div>
       <div className={style.auth__input}>
-        <h2>Логин</h2>
-        <Input setData={setLogin} placeholder={login} />
+        <Input setData={setName} placeholder={name} />
       </div>
       <div className={style.auth__input}>
-        <h2>Пароль</h2>
-        <Input setData={setPassword} placeholder={password} />
+        <Input setData={setEmail} placeholder={email} />
       </div>
       {validator ? (
         <div className={style.auth__input_valit}>
-          Неправильный Логин или Пароль
+          Неправильное Имя или Почта
         </div>
       ) : null}
       <div>

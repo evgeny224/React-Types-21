@@ -1,22 +1,21 @@
-import { UserEditingActionType } from "./actions";
-import { ReducerType, userEditingAction } from "./types";
+import { UserActionType } from "./actions";
+import { ActionsType, OneUserType, ReducerType } from "./types";
 
 const initialState: ReducerType = {
-  user: {
-    name: "Имя",
-    callSign: "Позывной",
-    email: "privatka@club.ru",
-    birthDate: "Дата рождения",
-    family: "Фамилия",
-    city: "Город",
-  },
+  users: [],
+  user: {} as OneUserType,
 };
 const profileReducer = (
   state = initialState,
-  action: userEditingAction
+  action: ActionsType
 ): ReducerType => {
   switch (action.type) {
-    case UserEditingActionType.userEditing:
+    case UserActionType.fetchUserData:
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case UserActionType.fetchOneUserData:
       return {
         ...state,
         user: action.payload,

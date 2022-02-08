@@ -2,7 +2,7 @@ import { UserAuthActionType } from "./actions";
 import { authUserAction, ReducerType } from "./types";
 
 const intialState: ReducerType = {
-  auth: { login: "abc", password: "123" },
+  auth: { login: "", password: "" },
 };
 
 const authReducer = (
@@ -11,7 +11,7 @@ const authReducer = (
 ): ReducerType => {
   switch (action.type) {
     case UserAuthActionType.userAuth: {
-      return state;
+      return { ...state, auth: action.payload };
     }
     default:
       return state;

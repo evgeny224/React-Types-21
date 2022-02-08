@@ -6,16 +6,17 @@ import Input from "../../Components/Input";
 import mask from "../../Assets/Mask Group.png";
 import style from "./ProfileEditingPage.module.scss";
 import LoadButton from "../../Components/Buttons/LoadButton";
-import { getUserData } from "../../Store/ProfileEditingPage/selectors";
-import { userEditingActionCreator } from "../../Store/ProfileEditingPage/actions";
+import { getOneUserData } from "../../Store/ProfileEditingPage/selectors";
+import { fetchOneUserActionCreator } from "../../Store/ProfileEditingPage/actions";
 
 const ProfileEditingPage: React.FC = () => {
-  const [callSign, setcallSign] = useState("Позывной");
-  const [email, setEmail] = useState("privatka@club.ru");
-  const [name, setName] = useState("Имя");
-  const [birthDate, setBirthDate] = useState("Дата рождения");
-  const [family, setFamily] = useState("Фамилия");
-  const [city, setCity] = useState("Город");
+  const userData = useSelector(getOneUserData);
+  const [username, setUsername] = useState(userData.username);
+  const [email, setEmail] = useState(userData.email);
+  const [name, setName] = useState(userData.name);
+  const [phone, setPhone] = useState(userData.phone);
+  const [companyName, setCompany] = useState(userData.company.name);
+  const [city, setCity] = useState(userData.address.city);
 
   const history = useNavigate();
   const dispatch = useDispatch();
@@ -23,17 +24,20 @@ const ProfileEditingPage: React.FC = () => {
   const submitForm = () => {
     history("/profile");
     dispatch(
-      userEditingActionCreator({
-        name,
-        callSign,
+      fetchOneUserActionCreator({
+        username,
         email,
-        birthDate,
-        family,
-        city,
+        name,
+        phone,
+        company: {
+          name: companyName,
+        },
+        address: {
+          city,
+        },
       })
     );
   };
-  const userData = useSelector(getUserData);
 
   return (
     <div className={style.profile}>
@@ -44,7 +48,7 @@ const ProfileEditingPage: React.FC = () => {
         <div className={style.profile__input__first_row}>
           <div>
             <p>ПОЗЫВНОЙ</p>
-            <Input setData={setcallSign} placeholder={userData.callSign} />
+            <Input setData={setUsername} placeholder={userData.username} />
           </div>
           <div>
             <p>E-MAIL</p>
@@ -57,18 +61,18 @@ const ProfileEditingPage: React.FC = () => {
             <Input setData={setName} placeholder={userData.name} />
           </div>
           <div>
-            <p>ДАТА РОЖДЕНИЯ</p>
-            <Input setData={setBirthDate} placeholder={userData.birthDate} />
+            <p>НОМЕР ТЕЛЕФОНА</p>
+            <Input setData={setPhone} placeholder={userData.phone} />
           </div>
         </div>
         <div className={style.profile__input__first_row}>
           <div>
-            <p>ФАМИЛИЯ</p>
-            <Input setData={setFamily} placeholder={userData.family} />
+            <p>МЕСТО РАБОТЫ</p>
+            <Input setData={setCompany} placeholder={userData.company.name} />
           </div>
           <div>
             <p>ГОРОД</p>
-            <Input setData={setCity} placeholder={userData.city} />
+            <Input setData={setCity} placeholder={userData.address.city} />
           </div>
         </div>
         <div>

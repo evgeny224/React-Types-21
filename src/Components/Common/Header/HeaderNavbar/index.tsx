@@ -37,15 +37,11 @@ const HeaderNavbar: React.FC = () => {
       </ul>
       <ul className={style.header__nav__social}>
         <li>
-          <NavLink to="/vkontakt">VKONTAKTE</NavLink>
+          <NavLink to="/auth">Вход</NavLink>
           <img src={arrow} alt="arrow" />
         </li>
         <li>
-          <NavLink to="/instagram">INSTAGRAM</NavLink>
-          <img src={arrow} alt="arrow" />
-        </li>
-        <li className={style.lastitem}>
-          <NavLink to="/youtube">YOUTUBE</NavLink>
+          <NavLink to="/">Регистрация</NavLink>
           <img src={arrow} alt="arrow" />
         </li>
       </ul>
