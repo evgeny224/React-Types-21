@@ -10,7 +10,7 @@ import { getOneUserData } from "../../Store/ProfileEditingPage/selectors";
 const PersonalProfilePage: React.FC = () => {
   const history = useNavigate();
   const outProfile = () => {
-    history("/auth");
+    history("/");
   };
   const userData = useSelector(getOneUserData);
 
@@ -36,7 +36,7 @@ const PersonalProfilePage: React.FC = () => {
           <div className={style.content__profile__input__first_row}>
             <div className={style.content__profile__input__first_row_box}>
               <p>ПОЗЫВНОЙ</p>
-              <div>{userData.username}</div>
+              <div>{userData.username ? userData.username : ""}</div>
             </div>
             <div>
               <p>E-MAIL</p>
@@ -50,17 +50,17 @@ const PersonalProfilePage: React.FC = () => {
             </div>
             <div className={style.content__profile__input__first_row_box}>
               <p>НОМЕР ТЕЛЕФОНА</p>
-              <div>{userData.phone}</div>
+              <div>{userData.phone ? userData.phone : ""}</div>
             </div>
           </div>
           <div className={style.content__profile__input__first_row}>
             <div className={style.content__profile__input__first_row_box}>
               <p>МЕСТО РАБОТЫ</p>
-              <div>{userData.company.name}</div>
+              <div>{userData.company ? userData.company.name : ""}</div>
             </div>
             <div className={style.content__profile__input__first_row_box}>
               <p>ГОРОД</p>
-              <div>{userData.address.city}</div>
+              <div>{userData.address ? userData.address.city : ""}</div>
             </div>
           </div>
         </div>

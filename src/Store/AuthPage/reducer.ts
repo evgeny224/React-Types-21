@@ -1,18 +1,23 @@
 import { UserAuthActionType } from "./actions";
-import { authUserAction, ReducerType } from "./types";
+import { ActionsType, AuthType, ReducerType } from "./types";
 
 const intialState: ReducerType = {
-  auth: { login: "", password: "" },
+  authUsers: [],
+  authUser: {} as AuthType,
 };
 
-const authReducer = (
-  state = intialState,
-  action: authUserAction
-): ReducerType => {
+const authReducer = (state = intialState, action: ActionsType): ReducerType => {
   switch (action.type) {
-    case UserAuthActionType.userAuth: {
-      return { ...state, auth: action.payload };
-    }
+    case UserAuthActionType.usersAuth:
+      return {
+        ...state,
+        authUsers: action.payload,
+      };
+    case UserAuthActionType.userAuth:
+      return {
+        ...state,
+        authUser: action.payload,
+      };
     default:
       return state;
   }

@@ -10,7 +10,7 @@ const profileReducer = (
   action: ActionsType
 ): ReducerType => {
   switch (action.type) {
-    case UserActionType.fetchUserData:
+    case UserActionType.fetchUsersData:
       return {
         ...state,
         users: action.payload,

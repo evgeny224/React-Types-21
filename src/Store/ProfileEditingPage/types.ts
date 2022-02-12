@@ -4,14 +4,6 @@ export type ReducerType = {
   users: OneUserType[];
   user: OneUserType;
 };
-// export type UserType = {
-//   name: string;
-//   callSign: string;
-//   email: string;
-//   birthDate: string;
-//   family: string;
-//   city: string;
-// };
 export type OneUserType = {
   id?: number;
   name: string;
@@ -40,7 +32,7 @@ export type oneUserFetchEditingAction = {
   payload: OneUserType;
 };
 export type userFetchEditingAction = {
-  type: UserActionType.fetchUserData;
+  type: UserActionType.fetchUsersData;
   payload: OneUserType[];
 };
 export type ActionsType = oneUserFetchEditingAction | userFetchEditingAction;

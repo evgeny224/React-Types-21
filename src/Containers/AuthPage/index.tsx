@@ -3,23 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import SaveButton from "../../Components/Buttons/SaveButton";
 import Input from "../../Components/Input";
-import {
-  fetchOneUserActionCreator,
-  fetchUserDataActionCreator,
-} from "../../Store/ProfileEditingPage/actions";
-import { getUserData } from "../../Store/ProfileEditingPage/selectors";
+import { getUserAuthActionCreator } from "../../Store/AuthPage/actions";
+import { getAuthUsersData } from "../../Store/AuthPage/selectors";
+import { fetchOneUserActionCreator } from "../../Store/ProfileEditingPage/actions";
 import style from "./AuthPage.module.scss";
 
 const AuthPage: React.FC = () => {
   useEffect(() => {
-    dispatch(fetchUserDataActionCreator());
+    dispatch(getUserAuthActionCreator());
   }, []);
   const [name, setName] = useState("Имя");
   const [email, setEmail] = useState("Электронная Почта");
   const [validator, setValidator] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData = useSelector(getUserData);
+  const userData = useSelector(getAuthUsersData);
 
   console.log(userData);
   const checkData = () => {

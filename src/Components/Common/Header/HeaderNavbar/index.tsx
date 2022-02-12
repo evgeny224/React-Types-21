@@ -37,13 +37,13 @@ const HeaderNavbar: React.FC = () => {
       </ul>
       <ul className={style.header__nav__social}>
         <li>
-          <NavLink to="/auth">Вход</NavLink>
+          <NavLink to="/">Вход</NavLink>
           <img src={arrow} alt="arrow" />
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/">Регистрация</NavLink>
           <img src={arrow} alt="arrow" />
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
