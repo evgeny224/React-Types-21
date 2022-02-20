@@ -22,9 +22,9 @@ export const makeRequest = async ({
   }
 };
 
-export const makeUpdate = async ({
+export const makeUserPhoto = async ({
   url,
-  method = "PUT",
+  method = "GET",
   data = {},
   params = {},
 }: AxiosRequestConfig) => {
@@ -34,7 +34,7 @@ export const makeUpdate = async ({
       url,
       data,
       params,
-      baseURL: "https://jsonplaceholder.typicode.com/",
+      baseURL: "https://api.github.com/",
       timeout: 10000,
     });
     return response.data;

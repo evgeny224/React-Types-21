@@ -1,18 +1,23 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./PersonalAreaPage.module.scss";
 import arrow from "../../Assets/GroupArrow 3117656.png";
 import mask from "../../Assets/Mask Group.png";
 import SaveButton from "../../Components/Buttons/SaveButton";
 import { getOneUserData } from "../../Store/ProfileEditingPage/selectors";
+import { getPhotoUserData } from "../../Store/UserPhoto/selectors";
+import { nonePhotoUserActionCreator } from "../../Store/UserPhoto/actions";
 
 const PersonalProfilePage: React.FC = () => {
   const history = useNavigate();
+  const dispatch = useDispatch();
   const outProfile = () => {
     history("/");
+    dispatch(nonePhotoUserActionCreator({}));
   };
   const userData = useSelector(getOneUserData);
+  const userPhoto = useSelector(getPhotoUserData);
 
   console.log(userData);
 
@@ -65,8 +70,11 @@ const PersonalProfilePage: React.FC = () => {
           </div>
         </div>
         <div className={style.content__profile__load__photo}>
-          <div>
-            <img src={mask} alt="mask" />
+          <div className={style.content__profile__load__photo__mask}>
+            <img
+              src={userPhoto.avatar_url ? userPhoto.avatar_url : mask}
+              alt="mask"
+            />
           </div>
           <div>
             <p>Фото</p>

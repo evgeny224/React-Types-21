@@ -1,10 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import style from "./HeaderInfo.module.scss";
 import logo from "../../../../Assets/Group 3117412.png";
 import icon from "../../../../Assets/Frame 3116937.png";
+import { getPhotoUserData } from "../../../../Store/UserPhoto/selectors";
 
 const HeaderInfo: React.FC = () => {
+  const getInfo = useSelector(getPhotoUserData);
+  console.log(getInfo.id);
   return (
     <nav className={style.header__info}>
       <ul className={style.header__info__list}>
@@ -30,7 +34,7 @@ const HeaderInfo: React.FC = () => {
         </li>
       </ul>
       <div className={style.icons}>
-        <img src={icon} alt="icon" />
+        <img src={getInfo.id ? icon : ""} alt="" />
       </div>
     </nav>
   );

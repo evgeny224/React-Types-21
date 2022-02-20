@@ -5,12 +5,13 @@ import SaveButton from "../../Components/Buttons/SaveButton";
 import Input from "../../Components/Input";
 import mask from "../../Assets/Mask Group.png";
 import style from "./ProfileEditingPage.module.scss";
-import LoadButton from "../../Components/Buttons/LoadButton";
 import { getOneUserData } from "../../Store/ProfileEditingPage/selectors";
 import { fetchOneUserActionCreator } from "../../Store/ProfileEditingPage/actions";
+import { getPhotoUserData } from "../../Store/UserPhoto/selectors";
 
 const ProfileEditingPage: React.FC = () => {
   const userData = useSelector(getOneUserData);
+  const userPhoto = useSelector(getPhotoUserData);
   const [username, setUsername] = useState(userData.username);
   const [email, setEmail] = useState(userData.email);
   const [name, setName] = useState(userData.name);
@@ -80,17 +81,11 @@ const ProfileEditingPage: React.FC = () => {
         </div>
       </div>
       <div className={style.profile__load__photo}>
-        <div>
-          <img src={mask} alt="mask" />
-        </div>
-        <div>
-          <p>
-            Максимальный размер
-            <br /> 300х300, вес менее 1 Мб
-          </p>
-          <div>
-            <LoadButton />
-          </div>
+        <div className={style.profile__load__photo_img}>
+          <img
+            src={userPhoto.avatar_url ? userPhoto.avatar_url : mask}
+            alt="mask"
+          />
         </div>
       </div>
     </div>
